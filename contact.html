@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Kontak</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link ke file CSS eksternal -->
+</head>
+<body>
+    <header>
+        <h1>Kontak Kami</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="about.html">Tentang</a></li>
+                <li><a href="contact.html">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="contact">
+            <h2 align="center">Form Kontak</h2>
+            <form id="contactForm" action="#" method="post">
+                <div class="form-group">
+                    <label for="name">Nama:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Pesan:</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit">Kirim</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>© 2024 hamba allah. Semua hak dilindungi.</p>
+    </footer>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            // Ambil nilai dari field
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var message = document.getElementById('message').value;
+
+            // Regex untuk validasi email
+            var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+
+            // Validasi field kosong
+            if (name === '' || email === '' || message === '') {
+                alert('Semua field harus diisi!');
+                event.preventDefault();
+                return false;
+            }
+
+            // Validasi format email
+            if (!emailPattern.test(email)) {
+                alert('Masukkan alamat email yang valid!');
+                event.preventDefault();
+                return false;
+            }
+
+            // Jika semua validasi lolos, form akan disubmit
+            alert('Form berhasil disubmit!');
+        });
+    </script>
+</body>
+</html>
